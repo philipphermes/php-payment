@@ -6,14 +6,14 @@ namespace PhilippHermes\PhpPayment;
 class PaypalCredentials
 {
     public function __construct(
-        public string $paypalClientId,
-        public string $paypalSecret,
-        public string $paypalBrandName,
-        public string $successUrl,
-        public string $cancelUrl,
-        public string $currency,
-        public string $locale,
-        public bool $paypalTest = true,
+        public \string $paypalClientId,
+        public \string $paypalSecret,
+        public \string $paypalBrandName,
+        public \string $successUrl,
+        public \string $cancelUrl,
+        public \string $currency,
+        public \string $locale,
+        public \bool $paypalTest = true,
     )
     {
     }

@@ -3,7 +3,7 @@
 ## Setup Credentials:
 
 ```php
-$credentials = new \App\Credentials();
+$credentials = new \PhilippHermes\PhpPayment\Credentials();
 
 $credentials->paypalTest = true;
 $credentials->paypalClientId = 'ClientId';
@@ -18,14 +18,14 @@ $credentials->locale = 'de';
 $credentials->successUrl = 'http://localhost:8000/success';
 $credentials->cancelUrl = 'http://localhost:8000';
 
-$paypal = new \App\Paypal($credentials);
-$stripe = new \App\Stripe($credentials);
+$paypal = new \PhilippHermes\PhpPayment\Paypal($credentials);
+$stripe = new \PhilippHermes\PhpPayment\Stripe($credentials);
 ```
 
 ### Shipping
 If you don't use shipping pass null
 ```php
-$paypalShippingDTO = new \App\DTO\ShippingDTO();
+$paypalShippingDTO = new \PhilippHermes\PhpPayment\DTO\ShippingDTO();
 $paypalShippingDTO->type = 'SHIPPING';
 $paypalShippingDTO->address = 'Strasse 1';
 $paypalShippingDTO->city = 'Düsseldorf';
@@ -38,13 +38,13 @@ $paypalShippingDTO->fullName = 'Max Mustermann';
 
 ### Items:
 ```php
-$itemDTO1 = new \App\DTO\ItemDTO();
+$itemDTO1 = new \PhilippHermes\PhpPayment\DTO\ItemDTO();
 $itemDTO1->name = 'Product 1';
 $itemDTO1->sku = '100-001';
 $itemDTO1->quantity = 2;
 $itemDTO1->price = 2.0;
 
-$itemDTO2 = new \App\DTO\ItemDTO();
+$itemDTO2 = new \PhilippHermes\PhpPayment\DTO\ItemDTO();
 $itemDTO2->name = 'Product 2';
 $itemDTO2->sku = '101-001';
 $itemDTO2->quantity = 1;
@@ -135,3 +135,7 @@ try {
     die();
 }
 ```
+
+### Dependency's:
+* guzzlehttp/guzzle
+* stripe/stripe-php

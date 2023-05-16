@@ -10,7 +10,6 @@ use GuzzleHttp\Client;
 class Paypal implements PaypalInterface
 {
     private Client $client;
-    private string $currency;
 
     private array $urls = [
         true => [
@@ -28,12 +27,11 @@ class Paypal implements PaypalInterface
     private array $currentUrls;
 
     public function __construct(
-        private Credentials $credentials,
+        private PaypalCredentials $credentials,
     )
     {
         $this->client = new Client();
         $this->currentUrls = $this->urls[$this->credentials->paypalTest];
-        $this->currency = strtoupper($this->credentials->currency);
     }
 
     /**
@@ -77,7 +75,7 @@ class Paypal implements PaypalInterface
                 'quantity' => $itemDTO->quantity,
                 'sku' => $itemDTO->sku,
                 'unit_amount' => [
-                    'currency_code' =>  $this->currency,
+                    'currency_code' =>  $this->credentials->currency,
                     'value' => $itemDTO->price,
                 ],
             ];
@@ -92,11 +90,11 @@ class Paypal implements PaypalInterface
                 'amount' => [
                     "breakdown" => [
                         'item_total' => [
-                            'currency_code' =>  $this->currency,
+                            'currency_code' =>  $this->credentials->currency,
                             'value' => $total,
                         ],
                     ],
-                    "currency_code" =>  $this->currency,
+                    "currency_code" =>  $this->credentials->currency,
                     "value" => $total + $shippingDTO->amount,
                 ],
             ],
@@ -121,7 +119,7 @@ class Paypal implements PaypalInterface
 
             $purchaseUnits[0]['shipping'] = $shippingPaypal;
             $purchaseUnits[0]['amount']['breakdown']['shipping'] = [
-                'currency_code' =>  $this->currency,
+                'currency_code' =>  $this->credentials->currency,
                 'value' => $shippingDTO->amount,
             ];
         } else {
@@ -206,7 +204,7 @@ class Paypal implements PaypalInterface
             'json' => [
                 'amount' => [
                     'value' => $amount,
-                    'currency_code' =>  $this->currency,
+                    'currency_code' =>  $this->credentials->currency,
                 ],
                 'note_to_payer' => $note,
             ],

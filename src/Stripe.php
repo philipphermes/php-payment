@@ -10,7 +10,7 @@ use Stripe\Refund;
 class Stripe implements StripeInterface
 {
     public function __construct(
-        private Credentials $credentials,
+        private StripeCredentials $credentials,
     )
     {
         \Stripe\Stripe::setApiKey( $this->credentials->stripeApiKey);

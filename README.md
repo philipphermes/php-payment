@@ -3,23 +3,35 @@
 ## Setup Credentials:
 
 ```php
-$credentials = new \PhilippHermes\PhpPayment\Credentials();
+//Paypal
+$paypalCredentials = new \PhilippHermes\PhpPayment\PaypalCredentials(
+    'ClientId',
+    'Secret',
+    'Test Shop',
+    'http://localhost:8000/order.php',
+    'http://localhost:8000',
+    'EUR',
+    'de-DE',
+    true
+);
 
-$credentials->paypalTest = true;
-$credentials->paypalClientId = 'ClientId';
-$credentials->paypalSecret = 'Secret';
-$credentials->paypalBrandName = 'Test Shop';
+$paypal = new \PhilippHermes\PhpPayment\Paypal($paypalCredentials);
 
-$credentials->stripeApiKey = 'ApiKey';
+//Set when auth is made, needed for all requests:
+$paypalCredentials->paypalAuthToken;
+//Set when createOrder, needed for capture and refund:
+$paypalCredentials->paypalRequestId;
 
-$credentials->currency = 'eur';
-$credentials->locale = 'de';
+//Stripe
+$stripeCredentials = new \PhilippHermes\PhpPayment\StripeCredentials(
+    'ApiKey',
+    'http://localhost:8000/order.php',
+    'http://localhost:8000',
+    'eur',
+    'de'
+);
 
-$credentials->successUrl = 'http://localhost:8000/success';
-$credentials->cancelUrl = 'http://localhost:8000';
-
-$paypal = new \PhilippHermes\PhpPayment\Paypal($credentials);
-$stripe = new \PhilippHermes\PhpPayment\Stripe($credentials);
+$stripe = new \PhilippHermes\PhpPayment\Stripe($stripeCredentials);
 ```
 
 ### Shipping

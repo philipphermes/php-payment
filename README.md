@@ -13,7 +13,7 @@ $paypalCredentials = new \PhilippHermes\PhpPayment\PaypalCredentials(
     'ClientId',
     'Secret',
     'Test Shop',
-    'http://localhost:8000/order.php',
+    'http://localhost:8000/success',
     'http://localhost:8000',
     'EUR',
     'de-DE',
@@ -30,7 +30,7 @@ $paypalCredentials->paypalRequestId;
 //Stripe
 $stripeCredentials = new \PhilippHermes\PhpPayment\StripeCredentials(
     'ApiKey',
-    'http://localhost:8000/order.php',
+    'http://localhost:8000/success',
     'http://localhost:8000',
     'eur',
     'de'

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App;
+namespace PhilippHermes\PhpPayment;
 
-use App\DTO\ShippingDTO;
+use PhilippHermes\PhpPayment\DTO\ShippingDTO;
 
 interface StripeInterface
 {
@@ -12,7 +12,7 @@ interface StripeInterface
     public const REASON_REQUESTED_BY_USER = 'requested_by_customer';
 
     /**
-     * @param \App\DTO\ItemDTO[] $itemDTOList
+     * @param \PhilippHermes\PhpPayment\DTO\ItemDTO[] $itemDTOList
      * @throws \Stripe\Exception\ApiErrorException
      */
     public function createCheckoutUrl(array $itemDTOList, ?ShippingDTO $shippingDTO): string;

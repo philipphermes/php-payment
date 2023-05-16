@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App;
+namespace PhilippHermes\PhpPayment;
 
-use App\DTO\ItemDTO;
-use App\DTO\ShippingDTO;
+use PhilippHermes\PhpPayment\DTO\ItemDTO;
+use PhilippHermes\PhpPayment\DTO\ShippingDTO;
 
 interface PaypalInterface
 {

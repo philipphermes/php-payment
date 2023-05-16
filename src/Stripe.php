@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App;
+namespace PhilippHermes\PhpPayment;
 
-use App\DTO\ShippingDTO;
-use Stripe\Charge;
+use PhilippHermes\PhpPayment\DTO\ShippingDTO;
 use Stripe\Checkout\Session;
 use Stripe\Refund;
 
@@ -18,7 +17,7 @@ class Stripe implements StripeInterface
     }
 
     /**
-     * @param \App\DTO\ItemDTO[] $itemDTOList
+     * @param \PhilippHermes\PhpPayment\DTO\ItemDTO[] $itemDTOList
      * @throws \Stripe\Exception\ApiErrorException
      */
     public function createCheckoutUrl(array $itemDTOList, ?ShippingDTO $shippingDTO = null, string $email = ''): string

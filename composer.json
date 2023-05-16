@@ -1,8 +1,7 @@
 {
     "name": "philipphermes/php-payment",
     "description": "",
-    "readme": "/readme.md",
-    "version": "1.0.0",
+    "readme": "/README.md",
     "license": "MIT",
     "authors": [
         {

@@ -1,5 +1,10 @@
 # PHP Payment
 
+## Installation:
+```
+composer require philipphermes/php-payment
+```
+
 ## Setup Credentials:
 
 ```php
